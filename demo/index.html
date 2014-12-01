@@ -4,51 +4,61 @@
 		<meta charset="utf-8"/>
 		<title>jQuery Boilerplate</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="js/jquery.deleteItem.js"></script>
+		<script src="js/jquery.rate.js"></script>
 
 		<link rel="stylesheet" href="css/main.css">
 	</head>
+	
 
 	<body>
 		<section>
 			<header>
-				<h1>Delete item Plugin</h1>
+				<h1>Rating Plugin</h1>
 				<div class="subheader">
-					Delete specific item / target when clicked <br>
+					Rating system
 					Do something else when item is removed
 				</div>
 			</header>
-
-			<button class="js-delete" data-target="element1"> Delete it </button>
-			<button class="js-delete" data-target="element2"> Delete it </button>
-			<button class="js-delete" data-target="element3"> Delete it </button>
-
-			<article id='element1' >
-				<h2>Article</h2>
-				<p>This article is about to be deleted</p>
-			</article>
-			<article id='element2' >
-				<h2>Article</h2>
-				<p>This article is about to be deleted</p>
-			</article>
-			<article id='element3' >
-				<h2>Article</h2>
-				<p>This article is about to be deleted</p>
-			</article>
+				<div class="rating" data-rating="3" >
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+				</div>
+				<br>			
+				<div class="rating" data-rating="1" >
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+				</div>
+				<br>
+				<div class="rating" data-rating="5" >
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+					<span class="star">*</span>
+				</div>
+				<br>
 		</section>
 
 		<script>
+
+			// Call the plugin when dom ready
 			$(document).ready(function() {
 
-				$('.js-delete').each(function() {
-					var target = $("#"+$(this).data("target"))
-					
-					$(this).deleteItem({
-						onComplete: function() {
-							console.log('Then followup with an awesome callback!');
-						},
-						target : target
-					});
+				$('.rating').rate( {
+					onComplete: function () {
+						// return the plugin instance.. 
+						// so you have full acces to its methods and properties
+						console.log("updated, new rate", this.rate);
+						console.log("current element", this.element);
+						console.log("current items", this.$items);
+						// etc...
+					}
 				});
 			});
 		</script>

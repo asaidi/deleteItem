@@ -8,22 +8,21 @@ header {
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 }
-button.checked {
-	background: red;
+
+.rating {
+	overflow: hidden;
+	display: inline-block;
+	font-size: 1em;
+	padding: 5px;
 }
-li {
-	list-style: none;
+.rating .star {
+	font-weight: bold;
+	padding: 0 5px;
 	cursor: pointer;
-	display: block;
-	padding: 10px;
+	float: left;
+	line-height: 1;
+
 }
-.checked {
-	position: relative;
-}
-.checked:before {
-	font-family: 'courier new';
-	content: "\2660";
-	position: absolute;
-	top: 10px;
-	left: -5px;
+.rating .active {
+	color: red;
 }
